@@ -47,5 +47,5 @@ models:
         materialized: table
         intermediate:
             python:
-              +cluster_id: 1121-175813-2agrmn6x
+              +cluster_id: 1221-222827-ofavylyp
               +submission_method: all_purpose_cluster
