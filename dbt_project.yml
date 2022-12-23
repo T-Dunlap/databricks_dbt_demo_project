@@ -9,12 +9,12 @@ config-version: 2
 profile: 'default'
 
 # These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that models in this project can be
+# The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-source-paths: ["models"]
+model-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
@@ -40,12 +40,16 @@ models:
   databricks_demo:
       # Applies to all files under models/example/
       util:
-        materialized: view  
+        +materialized: view  
+        +schema: util
       staging:
-        materialized: table
+        +materialized: table
+        +schema: bronze
       marts:
-        materialized: table
+        +materialized: table
+        +schema: gold
         intermediate:
-            python:
-              +cluster_id: 1221-222827-ofavylyp
-              +submission_method: all_purpose_cluster
+          +schema: silver
+          python:
+            +cluster_id: 1221-222827-ofavylyp
+            +submission_method: all_purpose_cluster
