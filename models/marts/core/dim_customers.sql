@@ -23,7 +23,7 @@ final as (
     select 
         customer.customer_key,
         customer.name,
-        customer.address,
+        customer.address as addresses,
         {# nation.nation_key as nation_key, #}
         nation.name as nation,
         {# region.region_key as region_key, #}
