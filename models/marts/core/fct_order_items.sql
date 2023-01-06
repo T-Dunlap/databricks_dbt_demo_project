@@ -20,6 +20,7 @@ final as (
         order_item.order_item_key,
         order_item.order_key,
         order_item.order_date,
+        {{ convert_date('order_item','order_date', "yyyy-MM-dd", "MM-dd-yyyy") }},
         order_item.customer_key,
         order_item.part_key,
         order_item.supplier_key,

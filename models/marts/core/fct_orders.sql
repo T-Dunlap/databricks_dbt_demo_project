@@ -35,6 +35,7 @@ final as (
 
         orders.order_key, 
         orders.order_date,
+        {{ convert_date('orders','order_date', "yyyy-MM-dd", "MM/dd/yyyy") }},
         orders.customer_key,
         orders.status_code,
         orders.priority_code,
