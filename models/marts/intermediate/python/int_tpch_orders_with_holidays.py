@@ -1,4 +1,4 @@
-import holidays
+import holidays 
 
 def is_holiday(date_col):
     us_holidays = holidays.US()
@@ -12,7 +12,7 @@ def model(dbt, session):
         create_notebook=True
     )
 
-    orders_df = dbt.ref("stg_tpch_orders")
+    orders_df = dbt.ref("stg_tpch_orders") #referencing to an existing model
 
     df = orders_df.to_pandas_on_spark() 
 
