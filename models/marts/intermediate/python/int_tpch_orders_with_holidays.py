@@ -20,7 +20,7 @@ def model(dbt, session):
     df["is_holiday"] = df["order_date"].apply(is_holiday)
 
     # convert back to PySpark
-    df = df.to_spark()             
+    #df = df.to_spark()             
 
     # return final dataset (PySpark DataFrame)
     return df
