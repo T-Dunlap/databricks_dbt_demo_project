@@ -50,6 +50,6 @@ models:
         +schema: gold
         intermediate:
           +schema: silver
-          python:
-            +cluster_id: "{{ env_var('DBT_PYTHON_CLUSTER_ID') }}" #1221-222827-ofavylyp
-            +submission_method: all_purpose_cluster
+          #python:
+            #+cluster_id: "{{ env_var('DBT_PYTHON_CLUSTER_ID') }}" #1221-222827-ofavylyp
+            #+submission_method: all_purpose_cluster
