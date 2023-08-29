@@ -7,7 +7,7 @@
 
 with orders as (
     
-    select * from {{ ref('int_tpch_orders_with_holidays') }}
+    select * from {{ ref('stg_tpch_orders') }}
 
 ),
 order_item as (
@@ -35,7 +35,7 @@ final as (
 
         orders.order_key, 
         orders.order_date,
-        --{{ convert_date('orders','order_date', "yyyy-MM-dd", "MM/dd/yyyy") }}, --references date macro
+        {{ convert_date('orders','order_date', "yyyy-MM-dd", "MM/dd/yyyy") }}, --references date macro
         orders.customer_key,
         orders.status_code,
         orders.priority_code,

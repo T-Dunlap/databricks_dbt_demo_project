@@ -12,7 +12,7 @@ with part as (
 final as (
     select 
         part_key,
-        manufacturer,
+        manufacturer as manufact,
         name,
         brand,
         type,
