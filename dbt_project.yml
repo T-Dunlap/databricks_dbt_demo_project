@@ -27,6 +27,11 @@ dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
 
+quoting:
+  database: false
+  schema: false
+  identifier: false
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -38,6 +43,7 @@ models:
   #incremental_strategy: merge  # with dbt-databricks adapter this is now the default
 
   databricks_demo:
+      +file_format: delta # or hudi
       # Applies to all files under models/example/
       util:
         +materialized: view  
