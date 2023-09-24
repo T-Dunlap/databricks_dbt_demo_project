@@ -56,6 +56,8 @@ models:
         +schema: gold
         intermediate:
           +schema: silver
-          #python:
-            #+cluster_id: "{{ env_var('DBT_PYTHON_CLUSTER_ID') }}" #1221-222827-ofavylyp
-            #+submission_method: all_purpose_cluster
+      ml:
+        +cluster_id: "{{ env_var('DBT_DATABRICKS_CLUSTER_ID') }}"
+        +submission_method: all_purpose_cluster
+        # Disabled until https://github.com/databricks/dbt-databricks/issues/232 is resolved
+        +enabled: true
