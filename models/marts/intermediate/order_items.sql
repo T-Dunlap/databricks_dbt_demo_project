@@ -85,7 +85,7 @@ final as (
     select
         derived_3.order_item_key,
         derived_3.order_key,
-        derived_3.customer_key,
+        derived_3.customer_keyz,
         derived_3.part_key,
         derived_3.supplier_key,
         derived_3.order_date,
