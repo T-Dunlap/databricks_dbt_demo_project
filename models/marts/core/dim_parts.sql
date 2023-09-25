@@ -1,8 +1,12 @@
 {{
     config(
-        materialized = 'table'
+        materialized='incremental',
+        incremental_strategy='append',
+        pre_hook='truncate table {{this}}'
     )
 }}
+
+
 with part as (
 
     select * from {{ref('stg_tpch_parts')}}
