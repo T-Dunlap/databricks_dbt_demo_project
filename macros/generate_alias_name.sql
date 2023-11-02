@@ -4,16 +4,28 @@
 
 {% macro default__generate_alias_name(custom_alias_name=none, node=none) -%}
 
-    {%- if target.name == 'CI' -%}
+    {%- if target.name.lower() == 'dev' -%}
+
+        {%- if custom_alias_name is none -%}
+
+            {{ node.config.schema }}__{{ node.name }}
+
+        {%- else -%}
+
+            {{ node.config.schema }}__{{ (custom_alias_name | trim) }}
+
+        {%- endif -%}
+
+    {%- elif target.name.lower() == 'ci' -%}
 
 
         {%- if custom_alias_name is none -%}
 
-            {{ target.schema }}__{{ node.config.schema ~ '__' ~ node.name }}
+            {{ target.schema }}_{{ node.name }}
 
         {%- else -%}
 
-            {{ target.schema }}__{{ node.config.schema ~ '__' ~ (custom_alias_name | trim) }}
+            {{ target.schema }}_{{ custom_alias_name | trim }}
 
         {%- endif -%}
 
@@ -30,9 +42,5 @@
         {%- endif -%}
 
     {%- endif -%}
-
-
-
-
 
 {%- endmacro %}
