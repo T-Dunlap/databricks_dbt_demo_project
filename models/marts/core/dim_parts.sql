@@ -1,8 +1,6 @@
 {{
     config(
-        materialized='incremental',
-        incremental_strategy='append',
-        pre_hook='truncate table {{this}}'
+        materialized='table'
     )
 }}
 
