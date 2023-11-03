@@ -1,8 +1,6 @@
 {{
     config(
-        materialized='incremental',
-        incremental_strategy='append',
-        pre_hook='truncate table {{this}}'
+        materialized='table'
     )
 }}
 
@@ -16,7 +14,7 @@ with part as (
 final as (
     select 
         part_key,
-        manufacturer as manufact,
+        manufacturer,
         name,
         brand,
         type,

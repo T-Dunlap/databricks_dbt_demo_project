@@ -1,17 +1,26 @@
-{% macro generate_schema_name(custom_schema_name=none, node=none) -%}
+{% macro generate_schema_name(custom_schema_name, node) -%}
+
     {%- set default_schema = target.schema -%}
+    {% if not custom_schema_name and node.resource_type == 'model' %}
+        {{ exceptions.raise_compiler_error(
+            'Model must have a custom schema configured.'
+        )}}
+    {% endif%}
 
-    {%- if target.name == 'CI' -%}
+    {% set default_ci_schema =  'ci_schema' %}
 
-        dbt_tdunlap_cijob
-        
-    {%- elif custom_schema_name is none -%}
+    {%- if target.name.lower() == 'dev' -%}
 
         {{ default_schema }}
 
+    {%- elif target.name.lower() == 'ci' -%}
+
+        {{ default_ci_schema }}
+
     {%- else -%}
 
-        {{ default_schema }}_{{ custom_schema_name | trim }}
+        {{ custom_schema_name | trim }}
 
-    {%- endif -%}    
+    {%- endif -%}
+
 {%- endmacro %}
