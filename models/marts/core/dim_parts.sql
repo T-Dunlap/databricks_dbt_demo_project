@@ -20,7 +20,8 @@ final as (
         type,
         size,
         container,
-        retail_price
+        retail_price,
+        'test' as test
     from
         part
 )
