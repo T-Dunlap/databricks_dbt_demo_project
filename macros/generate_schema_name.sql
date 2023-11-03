@@ -9,11 +9,11 @@
 
     {% set default_ci_schema =  'ci_schema' %}
 
-    {%- if target.name == 'dev' -%}
+    {%- if target.name.lower() == 'dev' -%}
 
         {{ default_schema }}
 
-    {%- elif target.name == 'ci' -%}
+    {%- elif target.name.lower() == 'ci' -%}
 
         {{ default_ci_schema }}
 

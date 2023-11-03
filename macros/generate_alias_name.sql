@@ -21,11 +21,11 @@
 
         {%- if custom_alias_name is none -%}
 
-            {{ target.schema }}_{{ node.name }}
+            {{ target.schema }}__{{ node.name }}
 
         {%- else -%}
 
-            {{ target.schema }}_{{ custom_alias_name | trim }}
+            {{ target.schema }}__{{ custom_alias_name | trim }}
 
         {%- endif -%}
 
